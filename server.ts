@@ -752,9 +752,9 @@ const startServer = async () => {
     app.use(vite.middlewares);
   } else {
     // In prod mode, serve static assets
-    app.use(express.static(path.join(__dirname, 'dist')));
+    app.use(express.static(path.join(ROOT_DIR, 'dist')));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+      res.sendFile(path.join(ROOT_DIR, 'dist', 'index.html'));
     });
   }
 
