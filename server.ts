@@ -20,6 +20,7 @@ const path = require('path');
 const ROOT_DIR = __dirname;
 
 // Serve your frontend build files
+const app = express();
 app.use(express.static(path.join(ROOT_DIR, 'dist')));
 
 // Catch-all route to serve index.html for your frontend routing
@@ -34,8 +35,8 @@ app.get('*', (req, res) => { res.sendFile(path.join(ROOT_DIR, 'dist', 'index.htm
 //});
 // original // const ROOT_DIR = __dirname.endsWith('dist') || __dirname.endsWith('dist' + path.sep) ? path.join(__dirname, '..') : __dirname;
 
-const app = express();
-app.use(express.json());
+//const app = express();
+//app.use(express.json());
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 // Q8: Configurable Python path — defaults to 'python' on Windows, 'python3' on Unix
