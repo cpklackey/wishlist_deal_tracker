@@ -15,7 +15,13 @@ const __filename = hasImportMeta ? fileURLToPath(import.meta.url) : (typeof __fi
 const __dirname = hasImportMeta ? path.dirname(__filename) : (typeof __dirname !== 'undefined' ? __dirname : '');
 
 // Resolve the root directory regardless of whether __dirname ends in "dist"
-const ROOT_DIR = __dirname.endsWith('dist') || __dirname.endsWith('dist' + path.sep) ? path.join(__dirname, '..') : __dirname;
+const ROOT_DIR = __dirname;
+
+app.use(express.static(path.join(ROOT_DIR, 'dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(ROOT_DIR, 'dist', 'index.html'));
+});
+// const ROOT_DIR = __dirname.endsWith('dist') || __dirname.endsWith('dist' + path.sep) ? path.join(__dirname, '..') : __dirname;
 
 const app = express();
 app.use(express.json());
