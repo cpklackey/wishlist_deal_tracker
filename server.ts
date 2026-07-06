@@ -14,11 +14,29 @@ const hasImportMeta = typeof import.meta !== 'undefined' && typeof import.meta.u
 const __filename = hasImportMeta ? fileURLToPath(import.meta.url) : (typeof __filename !== 'undefined' ? __filename : '');
 const __dirname = hasImportMeta ? path.dirname(__filename) : (typeof __dirname !== 'undefined' ? __dirname : '');
 
-// Resolve the root directory regardless of whether __dirname ends in "dist"
-const ROOT_DIR = __dirname.endsWith('dist') || __dirname.endsWith('dist' + path.sep) ? path.join(__dirname, '..') : __dirname;
+const path = require('path');
 
+// This safely finds the root directory on both local and Render
+const ROOT_DIR = __dirname;
+
+// Serve your frontend build files
 const app = express();
-app.use(express.json());
+app.use(express.static(path.join(ROOT_DIR, 'dist')));
+
+// Catch-all route to serve index.html for your frontend routing
+app.get('*', (req, res) => { res.sendFile(path.join(ROOT_DIR, 'dist', 'index.html'))});
+
+// Resolve the root directory regardless of whether __dirname ends in "dist"
+//const ROOT_DIR = __dirname;
+
+//app.use(express.static(path.join(ROOT_DIR, 'dist')));
+//app.get('*', (req, res) => {
+ // res.sendFile(path.join(ROOT_DIR, 'dist', 'index.html'));
+//});
+// original // const ROOT_DIR = __dirname.endsWith('dist') || __dirname.endsWith('dist' + path.sep) ? path.join(__dirname, '..') : __dirname;
+
+//const app = express();
+//app.use(express.json());
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 // Q8: Configurable Python path — defaults to 'python' on Windows, 'python3' on Unix
