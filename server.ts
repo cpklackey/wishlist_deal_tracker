@@ -31,7 +31,7 @@ app.get('*', (req, res) => { res.sendFile(path.join(ROOT_DIR, 'dist', 'index.htm
 //app.use(express.static(path.join(ROOT_DIR, 'dist')));
 //app.get('*', (req, res) => {
  // res.sendFile(path.join(ROOT_DIR, 'dist', 'index.html'));
-});
+//});
 // original // const ROOT_DIR = __dirname.endsWith('dist') || __dirname.endsWith('dist' + path.sep) ? path.join(__dirname, '..') : __dirname;
 
 const app = express();
