@@ -1,0 +1,6 @@
+{
+  "name": "Wishlist Deal Tracker",
+  "description": "Cross-reference game wishlists across Steam, GOG, and PSN, filter out owned games, check deals on ITAD, GFN, and PS Plus, and trigger alerts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
