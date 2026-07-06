@@ -23,9 +23,7 @@ const ROOT_DIR = __dirname;
 app.use(express.static(path.join(ROOT_DIR, 'dist')));
 
 // Catch-all route to serve index.html for your frontend routing
-app.get('*', (req, res) => {
-  res.sendFile(path.join(ROOT_DIR, 'dist', 'index.html'));
-});
+app.get('*', (req, res) => { res.sendFile(path.join(ROOT_DIR, 'dist', 'index.html'))});
 
 // Resolve the root directory regardless of whether __dirname ends in "dist"
 //const ROOT_DIR = __dirname;
